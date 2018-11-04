@@ -37,12 +37,15 @@ namespace WebApplication1
 
         public static void Main(string[] args)
         {
+            var path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            Constant.ContentRootPath = Path.Combine(path,"rmp");
             CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
+                .UseContentRoot(Constant.ContentRootPath)
                 .UseKestrel()
                 .UseUrls("http://*:9000/")
                 .UseStartup<Startup>();

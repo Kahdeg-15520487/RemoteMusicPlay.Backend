@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+
 using NAudioInterface;
+
 using RemoteMusicPlayServer.Service;
 
 namespace WebApplication1
@@ -19,14 +23,14 @@ namespace WebApplication1
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
+                //.SetBasePath(env.ContentRootPath)
+                .SetBasePath(Constant.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
 
-            Constant.ProjectRootFolder = env.ContentRootPath;
-            Constant.ConnectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            Constant.ConnectionString = Path.Combine(Constant.ContentRootPath, Configuration["ConnectionStrings:DefaultConnection"]);
 
             var hide = bool.Parse(Configuration["HideOnStart"]);
             if (hide)

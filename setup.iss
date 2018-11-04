@@ -18,7 +18,7 @@ AppPublisher={#MyAppPublisher}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
-OutputDir=C:\Users\DELL\Documents\Workspace\aspnet\RemoteMusicPlayServer\Installer
+OutputDir=Installer
 OutputBaseFilename=RMP_installer
 Compression=lzma
 SolidCompression=yes
@@ -27,15 +27,16 @@ SolidCompression=yes
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "C:\Users\DELL\Documents\Workspace\aspnet\RemoteMusicPlayServer\RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\RemoteMusicPlayServer.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\DELL\Documents\Workspace\aspnet\RemoteMusicPlayServer\RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Users\DELL\Documents\Workspace\aspnet\RemoteMusicPlayServer\RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\hostfxr.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\DELL\Documents\Workspace\aspnet\RemoteMusicPlayServer\RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\hostpolicy.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\DELL\Documents\Workspace\aspnet\RemoteMusicPlayServer\RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\NAudioInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\DELL\Documents\Workspace\aspnet\RemoteMusicPlayServer\RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\RemoteMusicPlayServer.deps.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\DELL\Documents\Workspace\aspnet\RemoteMusicPlayServer\RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\RemoteMusicPlayServer.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\DELL\Documents\Workspace\aspnet\RemoteMusicPlayServer\RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\RemoteMusicPlayServer.runtimeconfig.dev.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\DELL\Documents\Workspace\aspnet\RemoteMusicPlayServer\RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\RemoteMusicPlayServer.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\RemoteMusicPlayServer.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\publish\appsettings.json"; DestDir: "{userdocs}\rmp"; Flags: ignoreversion
+Source: "RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\hostfxr.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\hostpolicy.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\NAudioInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\RemoteMusicPlayServer.deps.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\RemoteMusicPlayServer.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\RemoteMusicPlayServer.runtimeconfig.dev.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "RemoteMusicPlayServer\bin\Release\netcoreapp2.1\win10-x64\RemoteMusicPlayServer.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -45,8 +46,5 @@ Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
 [Registry]
-;current user only
-Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "{#MyAppName}"; ValueData: "{app}\{#MyAppExeName}"; 
-
 ;any user
 Root: HKLM; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "{#MyAppName}"; ValueData: "{app}\{#MyAppExeName}"; 

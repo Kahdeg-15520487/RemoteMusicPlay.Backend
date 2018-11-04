@@ -71,7 +71,7 @@ namespace WebApplication1.Controllers
                 var form = Request.Form;
                 foreach (var formFile in form.Files)
                 {
-                    var targetDirectory = Path.Combine(Constant.ProjectRootFolder, "uploads");
+                    var targetDirectory = Path.Combine(Constant.ContentRootPath, "uploads");
 
                     var savePath = Path.Combine(targetDirectory, fileName);
 
